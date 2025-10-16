@@ -8,7 +8,9 @@ import com.teste.teste.repository.NoteRepository;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -30,6 +32,11 @@ public class NoteController {
     @PostMapping("/api/notes")
     public Note createNewNote(@RequestBody Note note) {
         return noteRepository.save(note);
+    }
+
+    @DeleteMapping("/api/notes/{id}")
+    public void deleteNote(@PathVariable Long id) {
+        noteRepository.deleteById(id);
     }
 
 }
